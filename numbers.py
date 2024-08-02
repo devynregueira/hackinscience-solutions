@@ -1,6 +1,8 @@
 #a sample of numerical challenges 
   #note: all changes Created by Julien Palard, unless otherwise specified
 
+import math 
+
 #Multiples of 3 and 5
   #Write a program that finds the sum of all natural numbers below 1000 (< 1000) that are multiples of 3 or 5, and prints it.
   #If we list all the natural numbers below 20 (<20) that are multiples of 3 or 5, we get 3, 5, 6, 9, 10, 12, 15, 18. The sum of these multiples is 78.
@@ -25,8 +27,6 @@ print(sum)
   #n is number that the function is_prime takes as a parameter.
   #The function is_prime return True if n is a prime number, False otherwise.
 
-import math
-
 def is_prime(n):
     check = 2;
     if n < check:
@@ -49,6 +49,24 @@ while cork:
         print(n);
         cork = False;
     n += 1;
+
+#Print every prime number in a range
+  #Provide a script that print every prime number in the range [10000;10050], on one line, separated by comas and spaces.
+
+def is_prime(n):
+    check = 2;
+    if n < check:
+        return False
+    max_check = int(math.sqrt(n)) + 1
+    while check < max_check:
+        if n % check == 0:
+            return False
+        check += 1
+    return True
+
+primes = [str(x) for x in range(10000,10051) if is_prime(x)]
+delim = ", "
+print(delim.join(primes))
 
 #Friday the 13th
   #Find the next friday the 13th.
