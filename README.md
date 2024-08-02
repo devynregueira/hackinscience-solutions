@@ -1,2 +1,2 @@
 # hackinscience-solutions
-Sample solutions to HackInScience.org python challenges
+My solutions to a sample of HackInScience.org python challenges
