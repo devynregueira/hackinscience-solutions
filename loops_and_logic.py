@@ -1,5 +1,45 @@
 #a series of challenges emphasizing logic and iteration
 
+#Reverse Roman Numerals
+  #Created by Julien Palard
+  #Write a function named from_roman_numeral that return the value of a given roman numeral.
+
+convert = {
+    "I": 1,
+    "V": 5,
+    "X": 10,
+    "L": 50,
+    "C": 100,
+    "D": 500,
+    "M": 1000
+}
+
+def from_roman_numeral(r_n):
+    counter = 0;
+    digits = [convert[r_n[x]] for x in range(0,len(r_n))]
+    patches = [];
+    
+    for ind, x in enumerate(digits):
+        prv = ind - 1
+        is_new_patch = True if ind == 0 else True if \
+        digits[prv] != x else False
+        
+        if is_new_patch:
+            patches.append([x])
+        else:
+            patches[-1].append(x)
+
+    for ind, patch in enumerate(patches):
+        degree = patch[0]
+        count = len(patch)
+        charge = ind == len(patches) - 1
+        charge = 1 if charge else -1 if degree < patches[ind + 1][0] \
+        else 1
+        
+        counter += degree * count * charge
+    
+    return counter
+
 #Sets of love
   #Created by Antoine Mazières
   #Once upon a time, in Paris, the city of romance, Bob and Alice met and fall in love with each other.
