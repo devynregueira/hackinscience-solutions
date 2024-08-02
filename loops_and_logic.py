@@ -21,8 +21,7 @@ def from_roman_numeral(r_n):
     
     for ind, x in enumerate(digits):
         prv = ind - 1
-        is_new_patch = True if ind == 0 else True if \
-        digits[prv] != x else False
+        is_new_patch = True if ind == 0 else True if digits[prv] != x else False
         
         if is_new_patch:
             patches.append([x])
@@ -33,12 +32,12 @@ def from_roman_numeral(r_n):
         degree = patch[0]
         count = len(patch)
         charge = ind == len(patches) - 1
-        charge = 1 if charge else -1 if degree < patches[ind + 1][0] \
-        else 1
+        charge = 1 if charge else -1 if degree < patches[ind + 1][0] else 1
         
         counter += degree * count * charge
     
     return counter
+
 
 #Sets of love
   #Created by Antoine Mazières
@@ -57,6 +56,7 @@ def affair_meet(bob, alice, silvester):
     forays = [x for x in alice if x in silvester and x not in bob]
     return set(forays)
 
+
 #Sort students
   #Created by Antoine Mazières
   #In this exercise we represent students as a pair of (mark, full_name), so a tuple of two elements.
@@ -72,3 +72,18 @@ def sort_by_mark(my_class):
 def sort_by_name(my_class):
     return sorted(my_class,key=lambda x: x[1],reverse=False)
 
+
+#The missing card
+  #Created by Julien Palard
+  #Write a function named missing_card that given a card game returns the (single) missing card name.
+  #The card game will be given as a single string of space-separated cards names. You'll always be given 51 cards, and you have to return the missing one.
+  #A card is represented by its color and value, the color being in {"S", "H", "D", "C"} and the value being in {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}, for a total of 52 possibilities.
+
+def missing_card(cards):
+    clrs = ["S","H","D","C"]
+    vals = [x for x in range(2,11)]
+    vals = vals + ["J","Q","K","A"]
+    vals = [clr + str(val) for val in vals for clr in clrs]
+    splt = cards.split()
+    
+    return [x for x in vals if x not in splt][0]
