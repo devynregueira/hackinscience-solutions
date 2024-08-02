@@ -87,3 +87,17 @@ def missing_card(cards):
     splt = cards.split()
     
     return [x for x in vals if x not in splt][0]
+
+
+#Perfect deck shuffle
+  #Created by Julien Palard
+  #Simulate a perfect suffle of a deck of cards. 
+  #A perfect shuffle of a deck of card is splitting a deck of cards into equal halves, and perfectly interleaving them. Perfectly shuffling [1, 2, 3, 4, 5, 6] gives [1, 4, 2, 5, 3, 6].
+  #You'll expose a perfect_shuffle(deck) function, perfectly shuffling the given iterable.
+
+def perfect_shuffle(deck):
+    half = int(len(deck)/2)
+    left = deck[0:half]
+    right = deck[half:len(deck)]
+    shuffled = [item for pair in zip(left, right) for item in pair]
+    return shuffled
